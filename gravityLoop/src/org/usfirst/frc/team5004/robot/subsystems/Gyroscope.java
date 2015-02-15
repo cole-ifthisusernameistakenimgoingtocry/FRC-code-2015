@@ -14,7 +14,19 @@ public class Gyroscope extends Subsystem {
 	}
 	
 	public double angle(){
-		return gyro.getAngle();
+		double angle = gyro.getAngle();
+		return angle - 360 * Math.floor(angle / 360);
+	}
+	
+	public double halfAngle(){
+		double angle = gyro.getAngle();
+		angle -= 360 * Math.floor(angle / 360);
+		
+		if(angle > 180){
+			angle -= 360;
+		}
+		
+		return angle;
 	}
 	
 	public void reset(){

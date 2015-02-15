@@ -9,7 +9,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team5004.robot.commands.CameraFeed;
 import org.usfirst.frc.team5004.robot.subsystems.Camera;
 import org.usfirst.frc.team5004.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5004.robot.subsystems.Fork;
 import org.usfirst.frc.team5004.robot.subsystems.Gyroscope;
+import org.usfirst.frc.team5004.robot.subsystems.Lift;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +25,8 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Camera camera = new Camera();
 	public static final Gyroscope gyro = new Gyroscope();
+	public static final Lift lift = new Lift();
+	public static final Fork fork = new Fork();
 	
 	public static OI oi;
 
