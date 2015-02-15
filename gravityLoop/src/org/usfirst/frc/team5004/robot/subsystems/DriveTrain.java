@@ -25,30 +25,35 @@ public class DriveTrain extends Subsystem {
 	CANTalon m3 = new CANTalon(RobotMap.backRight); //back right
 	CANTalon m4 = new CANTalon(RobotMap.frontRight); //front right
 	
-	double Vx = 0.0; //desired X (forward/backward) velocity
-	double Vy = 0.0; //desired Y (left/right) velocity
-	double Vr = 0.0; //desired rotational velocity
+	double[] in = {0.0, 0.0, 0.0}; //joystick inputs. 0 = forward/backward, 1 = left/right 2 = rotation
 	
 	double angle;
 	double magnitude;
 	
 	public void drive(){ //the main drive function
-		angle = Robot.oi.joyDriver1.getDirectionDegrees();
-		magnitude = Robot.oi.joyDriver1.getMagnitude();
 		
-		if(relativeMode){
-			angle -= Robot.gyro.halfAngle();
+		in[0] = -Robot.oi.joyDriver1.getY();
+		in[1] = Robot.oi.joyDriver1.getX();
+		in[2] = Robot.oi.joyDriver1.getTwist();
+		
+		for(int i = 0; i < in.length; i++){ //dead zone for joysticks
+			if(in[i] > -0.2 && in[i]< 0.2){
+				in[i] = 0.0;
+			}
 		}
 		
-		Vx = Math.cos(angle) * magnitude;
-		Vy = Math.sin(angle) * magnitude;
+		if(relativeMode){
+			double angle = Robot.gyro.angle() * (Math.PI / 180);
+			in[0] = in[0] * Math.cos(angle) + in[1] * Math.sin(angle);
+			in[1] = in[1] * Math.cos(angle) - in[0] * Math.sin(angle);
+		}
 		
 		//calculate the speed of each wheel
 		double wheels [] = {
-			(Vx + Vy + Vr),
-			(Vx - Vy + Vr),
-			-(Vx + Vy - Vr),
-			-(Vx - Vy - Vr),	
+			(in[0] + in[1] + in[2]) * 0.5,
+			(in[0] - in[1] + in[2]) * 0.5,
+			-((in[0] + in[1] - in[2]) * 0.5),
+			-((in[0] - in[1] - in[2]) * 0.5),	
 		};
 		
 		//make sure motor values are never greater than 100% so we don't break the motors

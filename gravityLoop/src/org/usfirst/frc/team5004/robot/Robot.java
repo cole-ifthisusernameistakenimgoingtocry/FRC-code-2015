@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team5004.robot.commands.CameraFeed;
+import org.usfirst.frc.team5004.robot.commands.Dashboard;
 import org.usfirst.frc.team5004.robot.subsystems.Camera;
 import org.usfirst.frc.team5004.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5004.robot.subsystems.Fork;
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command cameraFeed;
+    Command dashboard;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -41,6 +43,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         cameraFeed = new CameraFeed();
+        dashboard = new Dashboard();
         
         camera.init(); //initialize the camera
         gyro.init();
@@ -70,6 +73,7 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
         
         cameraFeed.start();
+        dashboard.start();
     }
 
     /**
