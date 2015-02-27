@@ -1,7 +1,5 @@
 package org.usfirst.frc.team5004.robot;
 
-import org.usfirst.frc.team5004.robot.commands.ForkClose;
-import org.usfirst.frc.team5004.robot.commands.ForkOpen;
 import org.usfirst.frc.team5004.robot.commands.ToggleRelativeMode;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -21,8 +19,6 @@ public class OI {
     						toggleRelative = new JoystickButton(joyDriver1, 2);
     
     public OI(){
-    	forkOpen.whileHeld(new ForkOpen());
-        forkClose.whileHeld(new ForkClose());
         toggleRelative.whenPressed(new ToggleRelativeMode());
     }
     

@@ -17,8 +17,6 @@ public class Dashboard extends Command {
     protected void execute() {
     	SmartDashboard.putNumber("gyro angle", Robot.gyro.angle());
     	SmartDashboard.putData("reset gyro", new ResetGyro());
-    	SmartDashboard.putData("open fork", new ForkOpen());
-    	SmartDashboard.putData("close fork", new ForkClose());
     	SmartDashboard.putData("toggle relative driving mode", new ToggleRelativeMode());
     	
     }

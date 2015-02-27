@@ -14,13 +14,19 @@ import org.usfirst.frc.team5004.robot.subsystems.Fork;
 import org.usfirst.frc.team5004.robot.subsystems.Gyroscope;
 import org.usfirst.frc.team5004.robot.subsystems.Lift;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
+/*   ______                                 __    __                      __                                     
+    /      \                               /  |  /  |                    /  |                                    
+   /$$$$$$  |  ______   ______   __     __ $$/  _$$ |_    __    __       $$ |        _|____    ______    ______  
+   $$ | _$$/  /      \ /      \ /  \   /  |/  |/ $$   |  /  |  /  |      $$ |       /      \  /      \  /      \ 
+   $$ |/    |/$$$$$$  |$$$$$$  |$$  \ /$$/ $$ |$$$$$$/   $$ |  $$ |      $$ |      /$$$$$$  |/$$$$$$  |/$$$$$$  |
+   $$ |$$$$ |$$ |  $$/ /    $$ | $$  /$$/  $$ |  $$ | __ $$ |  $$ |      $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |
+   $$ \__$$ |$$ |     /$$$$$$$ |  $$ $$/   $$ |  $$ |/  |$$ \__$$ |      $$ |_____ $$ \__$$ |$$ \__$$ |$$ |__$$ |
+   $$    $$/ $$ |     $$    $$ |   $$$/    $$ |  $$  $$/ $$    $$ |      $$       |$$    $$/ $$    $$/ $$    $$/ 
+    $$$$$$/  $$/       $$$$$$$/     $/     $$/    $$$$/   $$$$$$$ |      $$$$$$$$/  $$$$$$/   $$$$$$/  $$$$$$$/  
+													     /  \__$$ |                                    $$ |      
+                                                         $$    $$/                                     $$ |      
+                                                          $$$$$$/                                      $$/       
+*/
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();

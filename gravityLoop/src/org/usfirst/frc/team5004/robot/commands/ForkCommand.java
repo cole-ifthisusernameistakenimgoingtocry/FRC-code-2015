@@ -7,17 +7,23 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ForkOpen extends Command {
+public class ForkCommand extends Command {
 
-    public ForkOpen() {
-        requires(Robot.fork);
+    public ForkCommand() {
+    	requires(Robot.fork);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	Robot.fork.fork(1);
+    	if(Robot.oi.forkClose.get()){
+    		Robot.fork.fork(-1.0);
+    	}else if(Robot.oi.forkOpen.get()){
+    		Robot.fork.fork(1.0);
+    	}else{
+    		Robot.fork.fork(0.0);
+    	}
     }
 
     protected boolean isFinished() {
@@ -25,8 +31,10 @@ public class ForkOpen extends Command {
     }
 
     protected void end() {
+    	Robot.fork.fork(0.0);
     }
 
     protected void interrupted() {
+    	Robot.fork.fork(0.0);
     }
 }
